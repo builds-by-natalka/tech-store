@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStore - Інтернет магазин технологій</title>
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <!-- Google Analytics 4 - Замініть GA_MEASUREMENT_ID на ваш реальний ID -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <div class="logo">TechStore</div>
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">Головна</a></li>
+            <li><a href="products.html">Товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+            <li><a href="blog.html">Блог</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <div class="hero">
+          <h1>Ласкаво просимо до тестового!</h1>
+          <p>Ваш надійний партнер у світі сучасних технологій</p>
+          <a
+            href="products.html"
+            class="cta-button"
+            onclick="trackEvent('cta_click', 'homepage', 'hero_button')"
+            >Переглянути товари</a
+          >
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Смартфони</h3>
+            <p>
+              Найновіші моделі від провідних брендів світу. Гарантія якості та
+              доступні ціни.
+            </p>
+            <a
+              href="products.html?filter=smartphone"
+              class="cta-button"
+              onclick="trackEvent('feature_click', 'homepage', 'smartphones')"
+              >Переглянути</a
+            >
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>Ноутбуки</h3>
+            <p>
+              Потужні ноутбуки для роботи, навчання та розваг. Широкий вибір
+              конфігурацій.
+            </p>
+            <a
+              href="products.html?filter=laptop"
+              class="cta-button"
+              onclick="trackEvent('feature_click', 'homepage', 'laptops')"
+              >Переглянути</a
+            >
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <h3>Аксесуари</h3>
+            <p>
+              Якісні аксесуари для ваших пристроїв. Від навушників до зарядних
+              пристроїв.
+            </p>
+            <a
+              href="products.html?filter=accessory"
+              class="cta-button"
+              onclick="trackEvent('feature_click', 'homepage', 'accessories')"
+              >Переглянути</a
+            >
+          </div>
+        </div>
+
+        <!-- Секція популярних товарів -->
+        <section class="popular-products" style="margin: 3rem 0">
+          <h2 style="text-align: center; margin-bottom: 2rem">
+            Популярні товари
+          </h2>
+          <div class="products-grid">
+            <div class="product-card">
+              <div class="product-image">📱</div>
+              <div class="product-info">
+                <h3>iPhone 15 Pro</h3>
+                <p>Найновіший флагманський смартфон</p>
+                <div class="product-price">₴45,999</div>
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('iPhone 15 Pro', 45999, 'smartphone')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">💻</div>
+              <div class="product-info">
+                <h3>MacBook Air M3</h3>
+                <p>Ультратонкий та потужний ноутбук</p>
+                <div class="product-price">₴54,999</div>
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('MacBook Air M3', 54999, 'laptop')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+            <div class="product-card">
+              <div class="product-image">🎧</div>
+              <div class="product-info">
+                <h3>AirPods Pro</h3>
+                <p>Навушники з шумоподавленням</p>
+                <div class="product-price">₴9,999</div>
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('AirPods Pro', 9999, 'accessory')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="newsletter-form">
+          <h3>Підпишіться на новини</h3>
+          <p>Отримуйте інформацію про нові товари та спеціальні пропозиції</p>
+          <input
+            type="email"
+            id="newsletter-email"
+            placeholder="Ваша електронна пошта"
+          />
+          <button class="cta-button" onclick="subscribeNewsletter()">
+            Підписатися
+          </button>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          &copy; 2024 TechStore. Всі права захищені. | Створено для навчання
+          Google Analytics
+        </p>
+      </footer>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title">Заголовок</h3>
+        <p id="modal-text">Текст повідомлення</p>
+      </div>
+    </div>
+
+    <script src="analytics.js"></script>
+    <script>
+      // Відстеження завантаження головної сторінки
+      document.addEventListener("DOMContentLoaded", function () {
+        trackPageView("home", "Головна сторінка");
+      });
+    </script>
+  </body>
+</html>

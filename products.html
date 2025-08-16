@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Товари - TechStore</title>
+    <link rel="stylesheet" href="css/index.css" />
+
+    <!-- Google Analytics 4 - Замініть GA_MEASUREMENT_ID на ваш реальний ID -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <div class="logo">TechStore</div>
+          <ul class="nav-links">
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="products.html" class="active">Товари</a></li>
+            <li><a href="about.html">Про нас</a></li>
+            <li><a href="contact.html">Контакти</a></li>
+            <li><a href="blog.html">Блог</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h1
+          style="
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          "
+        >
+          Наші товари
+        </h1>
+
+        <!-- Фільтри товарів -->
+        <div class="filter-buttons">
+          <button
+            class="cta-button active"
+            onclick="filterProducts('all')"
+            id="filter-all"
+          >
+            Всі товари
+          </button>
+          <button
+            class="cta-button"
+            onclick="filterProducts('smartphone')"
+            id="filter-smartphone"
+          >
+            Смартфони
+          </button>
+          <button
+            class="cta-button"
+            onclick="filterProducts('laptop')"
+            id="filter-laptop"
+          >
+            Ноутбуки
+          </button>
+          <button
+            class="cta-button"
+            onclick="filterProducts('accessory')"
+            id="filter-accessory"
+          >
+            Аксесуари
+          </button>
+        </div>
+
+        <!-- Пошук товарів -->
+        <div class="search-section">
+          <input
+            type="text"
+            id="product-search"
+            placeholder="Пошук товарів..."
+            style="
+              padding: 1rem;
+              border: 2px solid #ddd;
+              border-radius: 25px;
+              width: 300px;
+              margin: 1rem auto;
+              display: block;
+            "
+          />
+        </div>
+
+        <div class="products-grid" id="products-container">
+          <div
+            class="product-card"
+            data-category="smartphone"
+            data-name="iPhone 15 Pro"
+          >
+            <div class="product-image">📱</div>
+            <div class="product-info">
+              <h3>iPhone 15 Pro</h3>
+              <p>
+                Найновіший флагманський смартфон від Apple з потужним процесором
+                A17 Pro та титановим корпусом.
+              </p>
+              <div class="product-price">₴45,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('iPhone 15 Pro', 45999, 'smartphone')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('iPhone 15 Pro')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="laptop"
+            data-name="MacBook Air M3"
+          >
+            <div class="product-image">💻</div>
+            <div class="product-info">
+              <h3>MacBook Air M3</h3>
+              <p>
+                Ультратонкий та потужний ноутбук для професіоналів та студентів
+                з чіпом M3.
+              </p>
+              <div class="product-price">₴54,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('MacBook Air M3', 54999, 'laptop')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('MacBook Air M3')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="accessory"
+            data-name="AirPods Pro"
+          >
+            <div class="product-image">🎧</div>
+            <div class="product-info">
+              <h3>AirPods Pro</h3>
+              <p>
+                Бездротові навушники з активним шумоподавленням та просторовим
+                звуком.
+              </p>
+              <div class="product-price">₴9,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('AirPods Pro', 9999, 'accessory')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('AirPods Pro')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="accessory"
+            data-name="Apple Watch Ultra"
+          >
+            <div class="product-image">⌚</div>
+            <div class="product-info">
+              <h3>Apple Watch Ultra</h3>
+              <p>
+                Розумний годинник для активного способу життя та спорту з
+                титановим корпусом.
+              </p>
+              <div class="product-price">₴32,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('Apple Watch Ultra', 32999, 'wearable')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('Apple Watch Ultra')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="smartphone"
+            data-name="Samsung Galaxy S24"
+          >
+            <div class="product-image">📱</div>
+            <div class="product-info">
+              <h3>Samsung Galaxy S24</h3>
+              <p>
+                Інноваційний Android смартфон з камерою 200MP та ШІ функціями.
+              </p>
+              <div class="product-price">₴39,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('Samsung Galaxy S24', 39999, 'smartphone')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('Samsung Galaxy S24')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="laptop"
+            data-name="Dell XPS 13"
+          >
+            <div class="product-image">💻</div>
+            <div class="product-info">
+              <h3>Dell XPS 13</h3>
+              <p>
+                Компактний та продуктивний ноутбук з InfinityEdge дисплеєм 4K.
+              </p>
+              <div class="product-price">₴42,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('Dell XPS 13', 42999, 'laptop')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('Dell XPS 13')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="accessory"
+            data-name="iPad Pro 12.9"
+          >
+            <div class="product-image">📱</div>
+            <div class="product-info">
+              <h3>iPad Pro 12.9"</h3>
+              <p>
+                Професійний планшет з M2 чіпом та Liquid Retina XDR дисплеєм.
+              </p>
+              <div class="product-price">₴52,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('iPad Pro 12.9', 52999, 'tablet')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('iPad Pro 12.9')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="product-card"
+            data-category="accessory"
+            data-name="Magic Keyboard"
+          >
+            <div class="product-image">⌨️</div>
+            <div class="product-info">
+              <h3>Magic Keyboard</h3>
+              <p>Бездротова клавіатура з підсвічуванням клавіш та Touch ID.</p>
+              <div class="product-price">₴5,999</div>
+              <div class="product-actions">
+                <button
+                  class="cta-button"
+                  onclick="trackPurchase('Magic Keyboard', 5999, 'accessory')"
+                >
+                  Купити
+                </button>
+                <button
+                  class="cta-button-secondary"
+                  onclick="viewProduct('Magic Keyboard')"
+                >
+                  Детальніше
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Секція рекомендованих товарів -->
+        <div class="recommendations" style="margin-top: 4rem">
+          <h3 style="text-align: center; margin-bottom: 2rem">
+            Рекомендовані аксесуари
+          </h3>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 1.5rem;
+            "
+          >
+            <div class="product-card-small">
+              <div class="product-image-small">🔌</div>
+              <div class="product-info">
+                <h4>MagSafe зарядний пристрій</h4>
+                <div class="product-price">₴1,899</div>
+                <button
+                  class="cta-button-small"
+                  onclick="trackPurchase('MagSafe Charger', 1899, 'accessory')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+            <div class="product-card-small">
+              <div class="product-image-small">📱</div>
+              <div class="product-info">
+                <h4>Silicone Case</h4>
+                <div class="product-price">₴2,599</div>
+                <button
+                  class="cta-button-small"
+                  onclick="trackPurchase('Silicone Case', 2599, 'accessory')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+            <div class="product-card-small">
+              <div class="product-image-small">🖱️</div>
+              <div class="product-info">
+                <h4>Magic Mouse</h4>
+                <div class="product-price">₴3,699</div>
+                <button
+                  class="cta-button-small"
+                  onclick="trackPurchase('Magic Mouse', 3699, 'accessory')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+            <div class="product-card-small">
+              <div class="product-image-small">🎒</div>
+              <div class="product-info">
+                <h4>MacBook сумка</h4>
+                <div class="product-price">₴2,999</div>
+                <button
+                  class="cta-button-small"
+                  onclick="trackPurchase('MacBook Bag', 2999, 'accessory')"
+                >
+                  Купити
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2024 TechStore. Всі права захищені. | Сторінка товарів</p>
+      </footer>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title">Заголовок</h3>
+        <p id="modal-text">Текст повідомлення</p>
+      </div>
+    </div>
+
+    <script src="analytics.js"></script>
+    <script>
+      // Відстеження завантаження сторінки товарів
+      document.addEventListener("DOMContentLoaded", function () {
+        trackPageView("products", "Товари");
+
+        // Пошук товарів
+        const searchInput = document.getElementById("product-search");
+        searchInput.addEventListener("input", function () {
+          searchProducts(this.value);
+          trackEvent("search", "products_page", this.value);
+        });
+
+        // Обробка URL параметрів для фільтрації
+        const urlParams = new URLSearchParams(window.location.search);
+        const filter = urlParams.get("filter");
+        if (filter) {
+          filterProducts(filter);
+        }
+      });
+
+      // Функція фільтрації товарів
+      function filterProducts(category) {
+        const products = document.querySelectorAll(".product-card");
+        const filters = document.querySelectorAll('[id^="filter-"]');
+
+        // Оновлення активного фільтра
+        filters.forEach((filter) => filter.classList.remove("active"));
+        document.getElementById(`filter-${category}`).classList.add("active");
+
+        // Фільтрація товарів
+        products.forEach((product) => {
+          if (category === "all" || product.dataset.category === category) {
+            product.style.display = "block";
+          } else {
+            product.style.display = "none";
+          }
+        });
+
+        trackEvent("filter_products", "products_page", category);
+      }
+
+      // Функція пошуку товарів
+      function searchProducts(query) {
+        const products = document.querySelectorAll(".product-card");
+
+        products.forEach((product) => {
+          const productName = product.dataset.name.toLowerCase();
+          if (productName.includes(query.toLowerCase()) || query === "") {
+            product.style.display = "block";
+          } else {
+            product.style.display = "none";
+          }
+        });
+      }
+
+      // Функція перегляду деталей товару
+      function viewProduct(productName) {
+        trackEvent("view_product_details", "products_page", productName);
+        showModal("Деталі товару", `Перегляд деталей товару: ${productName}`);
+      }
+    </script>
+  </body>
+</html>
