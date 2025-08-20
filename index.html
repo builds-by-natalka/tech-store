@@ -144,14 +144,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="newsletter-form">
           <h3>Підпишіться на новини</h3>
           <p>Отримуйте інформацію про нові товари та спеціальні пропозиції</p>
-          <input
-            type="email"
-            id="newsletter-email"
-            placeholder="Ваша електронна пошта"
-          />
-          <button class="cta-button" onclick="subscribeNewsletter()">
-            Підписатися
-          </button>
+          <form action="" method="get">
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Ваша електронна пошта"
+            />
+            <button
+              class="cta-button"
+              onclick="subscribeNewsletter()"
+              type="submit"
+            >
+              Підписатися
+            </button>
+          </form>
         </div>
       </main>
 
@@ -181,4 +187,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
   </body>
 </html>
+
 
